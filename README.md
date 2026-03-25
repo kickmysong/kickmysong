@@ -1,8 +1,8 @@
 
   # Song Upload and Conversion Site
 
-  This is a code bundle for Song Upload and Conversion Site. The original project is available at https://www.figma.com/design/NoaFpl2ci9prF8P0PGOpIc/Song-Upload-and-Conversion-Site.
-
+ This site is made for song coversion tool, on the behalf of soloartist youtube channel https://youtube.com/@soloartist_music
+ 
   ## Running the code
 
   Run `npm i` to install the dependencies.
