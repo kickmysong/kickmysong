@@ -175,7 +175,7 @@ export default function AudioTool({ onBack }: { onBack: () => void }) {
 
     // Create master gain
     const masterGain = context.createGain();
-    masterGain.gain.value = 0.7;
+    masterGain.gain.value = 1.3;
 
     // Connect the audio graph
     // Dry signal: source -> dryGain -> masterGain -> destination
@@ -358,7 +358,7 @@ export default function AudioTool({ onBack }: { onBack: () => void }) {
 
       // Create master gain
       const masterGain = offlineContext.createGain();
-      masterGain.gain.value = 0.7;
+      masterGain.gain.value = 1.3;
 
       // Connect the audio graph
       source.connect(dryGain);
@@ -459,8 +459,8 @@ export default function AudioTool({ onBack }: { onBack: () => void }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4">
-      <Card className="w-full max-w-2xl bg-slate-900/50 backdrop-blur-xl border-slate-800 shadow-2xl">
-        <div className="p-8 space-y-8">
+<Card className="w-full max-w-[95%] md:max-w-2xl mx-auto bg-slate-900/50 backdrop-blur-xl border-slate-800 shadow-2xl overflow-hidden">
+  <div className="p-4 sm:p-10 space-y-8"> 
           {/* Header */}
           <div className="flex flex-col items-center gap-4 mb-8">
             {/* Aapka Logo (Public folder se uthayega) */}
@@ -626,12 +626,12 @@ export default function AudioTool({ onBack }: { onBack: () => void }) {
 
               {/* Action Buttons (Naya 3-Button System) */}
               <div className="flex flex-col gap-4 pt-4">
-                <div className="flex gap-2">
+                <div className="grid grid-cols-3 gap-2">
                   {/* STOP BUTTON */}
                   <Button
                     onClick={handleStop}
                     variant="outline"
-                    className="flex-1 border-slate-700 text-black hover:bg-slate-800"
+                    className="flex-1 text-[10px] sm:text-sm border-slate-700 text-black hover:bg-slate-800"
                   >
                     <RefreshCw className="w-4 h-4 mr-2" /> Stop
                   </Button>
@@ -639,7 +639,7 @@ export default function AudioTool({ onBack }: { onBack: () => void }) {
                   {/* PAUSE / PLAY BUTTON */}
                   <Button
                     onClick={togglePlayPause}
-                    className="flex-1 bg-slate-100 text-black hover:bg-white"
+                    className="flex-1 text-[10px] sm:text-sm bg-slate-100 text-black hover:bg-white"
                   >
                     {isPlaying ? <Pause className="w-4 h-4 mr-2" /> : <Play className="w-4 h-4 mr-2" />}
                     {isPlaying ? 'Pause' : 'Play'}
@@ -648,7 +648,7 @@ export default function AudioTool({ onBack }: { onBack: () => void }) {
                   {/* LOOP BUTTON */}
                   <Button
                     onClick={() => setIsLooping(!isLooping)}
-                    className={`flex-1 transition-all ${isLooping ? 'bg-pink-600 text-white shadow-[0_0_15px_rgba(219,39,119,0.5)]' : 'bg-slate-800 text-slate-400'}`}
+                    className={`flex-1 text-[10px] sm:text-sm transition-all ${isLooping ? 'bg-pink-600 text-white shadow-[0_0_15px_rgba(219,39,119,0.5)]' : 'bg-slate-800 text-slate-400'}`}
                   >
                     Loop: {isLooping ? 'ON' : 'OFF'}
                   </Button>
