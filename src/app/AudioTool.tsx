@@ -4,7 +4,8 @@ import { Button } from './components/ui/button';
 import { Slider } from './components/ui/slider';
 import { Card } from './components/ui/card';
 
-export default function AudioTool() {
+// Pehle 'export default function AudioTool()' tha, ab ye daalo:
+export default function AudioTool({ onBack }: { onBack: () => void }) {
   const [audioFile, setAudioFile] = useState<File | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -475,10 +476,10 @@ export default function AudioTool() {
             {/* Brand Name with Gradient */}
             <div className="text-center">
               <h1 className="text-4xl font-black bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent tracking-tighter sm:text-5xl">
-                SOLO ARTIST
+                KICK MY SONG
               </h1>
               <p className="text-slate-400 text-sm mt-1 font-medium tracking-widest uppercase opacity-70">
-                Slowed + Reverb Lab
+                Slowed + Reverb
               </p>
             </div>
           </div>
@@ -678,7 +679,7 @@ export default function AudioTool() {
 
           {/* Footer */}
           <div className="text-center text-xs text-slate-500 pt-4 border-t border-slate-800">
-            Please subscribe to my youtube channel. I provide full guide to earn by making slowed and reverb songs there.
+            Stay connect with me. Thanks for using our services. Lots of love.
           </div>
         </div>
       </Card>
