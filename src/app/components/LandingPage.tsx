@@ -74,7 +74,15 @@ export default function LandingPage({ onGetStarted }: { onGetStarted: () => void
       </div>
 
     </div>
+{/* LandingPage.tsx */}
 
+{/* Line 77 ke baad ye section add kar do */}
+<div className="max-w-4xl mx-auto px-6 py-12 text-center opacity-40">
+  <p className="text-xs text-slate-400 leading-relaxed">
+    Kick My Song is an advanced <span className="text-white font-bold">Song editor tool</span> designed for 
+    Song Artists and Lofi creators. Process your music directly in your browser in no time with studio level quality because both matter to us. In this site you will be able to make slowed and reverb, improve bass, add 8D effects solit the song into instruments and vocals and many more, just click on get started button and you are ready to go. Hope you enjoy our tool and if you want to know more about me you can also <a href="https://youtube.com/@soloartist_music" target="_blank" rel="noopener noreferrer" className="text-pink-500 font-bold hover:text-white underline underline-offset-4transition-all duration-300" > visit my Youtube channel name solo artist </a>
+  </p>
+</div>
     {/* Small Footer Text */}
     <p className="absolute bottom-8 text-[10px] tracking-[0.2em] text-slate-500 uppercase font-medium">
       © 2026 KICKMYSONG.COM • POWERED BY SOLO ARTIST

@@ -459,8 +459,8 @@ export default function AudioTool({ onBack }: { onBack: () => void }) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4">
-<Card className="w-full max-w-[95%] md:max-w-2xl mx-auto bg-slate-900/50 backdrop-blur-xl border-slate-800 shadow-2xl overflow-hidden">
-  <div className="p-4 sm:p-10 space-y-8"> 
+      <Card className="w-full max-w-[95%] md:max-w-2xl mx-auto bg-slate-900/50 backdrop-blur-xl border-slate-800 shadow-2xl overflow-hidden">
+        <div className="p-3 sm:p-10 space-y-3 sm:space-y-8">
           {/* Header */}
           <div className="flex flex-col items-center gap-4 mb-8">
             {/* Aapka Logo (Public folder se uthayega) */}
@@ -469,13 +469,13 @@ export default function AudioTool({ onBack }: { onBack: () => void }) {
               <img
                 src="/logo.png"
                 alt="Solo Artist Logo"
-                className="relative w-20 h-20 object-contain rounded-full border-2 border-slate-800"
+                className="relative w-12 h-12 sm:w-20 sm:h-20 object-contain rounded-full border-2 border-slate-800"
               />
             </div>
 
             {/* Brand Name with Gradient */}
             <div className="text-center">
-              <h1 className="text-4xl font-black bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent tracking-tighter sm:text-5xl">
+              <h1 className="text-xl font-black bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent tracking-tighter sm:text-5xl">
                 KICK MY SONG
               </h1>
               <p className="text-slate-400 text-sm mt-1 font-medium tracking-widest uppercase opacity-70">
@@ -531,7 +531,7 @@ export default function AudioTool({ onBack }: { onBack: () => void }) {
 
               {/* Spectral Timeline (Nayi Progress Bar) */}
               <div
-                className="relative w-full h-24 bg-slate-800/30 rounded-lg overflow-hidden cursor-pointer border border-slate-700/50 group"
+                className="relative w-full h-16 sm:h-24 bg-slate-800/30 rounded-xl overflow-hidden cursor-pointer border border-slate-700/50 group"
                 onClick={handleSeek}
               >
                 {/* Waveform Canvas */}
@@ -557,7 +557,7 @@ export default function AudioTool({ onBack }: { onBack: () => void }) {
 
 
               {/* Controls */}
-              <div className="space-y-6">
+              <div className="space-y-3 sm:smace-y-6">
                 {/* Speed Control */}
                 <div className="space-y-3">
                   <div className="flex justify-between items-center mb-1">
@@ -566,13 +566,16 @@ export default function AudioTool({ onBack }: { onBack: () => void }) {
                     </label>
 
                     {/* Right Side: Current Speed + Reset Button */}
-                    <div className="flex items-center gap-3">
-                      <span className="text-[10px] text-pink-500 font-mono font-bold">
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      {/* Current Speed Text */}
+                      <span className="text-[8px] sm:text-[10px] text-pink-500 font-mono font-bold uppercase">
                         CURRENT: {Math.round(playbackSpeed * 100)}%
                       </span>
+
+                      {/* Dynamic Reset Button */}
                       <button
                         onClick={() => setPlaybackSpeed(1.0)}
-                        className={`text-[10px] px-2 py-1 rounded border transition-all active:scale-95 ${playbackSpeed === 1.0
+                        className={`text-[8px] sm:text-[10px] px-1.5 sm:px-2 h-5 sm:h-7 rounded border transition-all active:scale-95 flex items-center justify-center font-black ${playbackSpeed === 1.0
                             ? "text-slate-600 border-slate-800 bg-slate-900/50 cursor-default"
                             : "text-pink-400 border-pink-500/30 bg-pink-500/5 hover:bg-pink-500/10"
                           }`}
@@ -585,11 +588,11 @@ export default function AudioTool({ onBack }: { onBack: () => void }) {
                   <Slider
                     value={[playbackSpeed]}
                     onValueChange={([value]) => {
-                    
+
                       if (value > 0.98 && value < 1.02) setPlaybackSpeed(1.0);
                       else setPlaybackSpeed(value);
                     }}
-                    min={0} 
+                    min={0}
                     max={2.0}
                     step={0.01}
                     className="w-full"
@@ -625,7 +628,7 @@ export default function AudioTool({ onBack }: { onBack: () => void }) {
               </div>
 
               {/* Action Buttons (Naya 3-Button System) */}
-              <div className="flex flex-col gap-4 pt-4">
+              <div className="flex flex-col gap-2 pt-2">
                 <div className="grid grid-cols-3 gap-2">
                   {/* STOP BUTTON */}
                   <Button
@@ -679,7 +682,7 @@ export default function AudioTool({ onBack }: { onBack: () => void }) {
 
           {/* Footer */}
           <div className="text-center text-xs text-slate-500 pt-4 border-t border-slate-800">
-            Stay connect with me. Thanks for using our services. Lots of love.
+            Stay connected with us. Thanks for using our services, lots of love.
           </div>
         </div>
       </Card>

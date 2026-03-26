@@ -3,51 +3,44 @@ import LandingPage from './components/LandingPage';
 import ToolsMenu from './components/ToolsMenu';
 import AudioTool from './AudioTool'; 
 import SiteHeader from './components/SiteHeader'; 
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfService from './components/TermsOfService';
 
 export default function App() {
-  const [view, setView] = useState<'landing' | 'dashboard'>('landing');
+  // 2. State update karo (privacy aur terms add kiya)
+  const [view, setView] = useState<'landing' | 'dashboard' | 'privacy' | 'terms'>('landing');
   const [activeTool, setActiveTool] = useState<string | null>(null);
 
+  // 3. Conditional Rendering (Landing Page wala logic wahi rahega)
   if (view === 'landing') {
     return <LandingPage onGetStarted={() => setView('dashboard')} />;
   }
 
   return (
-    // md:pt-20 matlab PC par zyada gap, pt-16 matlab mobile par normal gap
-    <div className="min-h-screen bg-[#080617] text-white flex flex-col pt-16 md:pt-20">
-      
-      <SiteHeader 
-        onLogoClick={() => { setActiveTool(null); setView('dashboard'); }} 
-        onDashboardClick={() => { setActiveTool(null); }} 
-      />
+    <div className="min-h-screen bg-[#080617] text-white flex flex-col pt-16">
+      <SiteHeader onLogoClick={() => { setActiveTool(null); setView('dashboard'); }} onDashboardClick={() => { setActiveTool(null); }} />
 
-      {/* p-4 (Mobile) aur md:p-10 (PC) - Isse mobile par side margins kam ho jayengi */}
-      <main className="flex-grow p-4 md:p-10 animate-in fade-in duration-500">
-        
-        <div className="max-w-6xl mx-auto w-full">
-          {!activeTool ? (
-            <ToolsMenu
-              onBack={() => setView('landing')}
-              onSelectTool={(id) => {
-                if (id === 'slowed') setActiveTool('slowed');
-                else alert("Coming Soon: this tool is under development🧪");
-              }}
-            />
-          ) : (
-            // w-full aur mx-auto ensures ki tool center mein rahe aur screen ke bahar na jaye
-            <div className="w-full mx-auto animate-in slide-in-from-bottom-4 duration-500">
-               {activeTool === 'slowed' && <AudioTool onBack={() => setActiveTool(null)} />}
-            </div>
-          )}
-        </div>
-
+      <main className="flex-grow p-4 md:p-10">
+        {/* ASLI MAGIC YAHAN HAI */}
+        {view === 'privacy' ? (
+          <PrivacyPolicy onBack={() => setView('dashboard')} />
+        ) : view === 'terms' ? (
+          <TermsOfService onBack={() => setView('dashboard')} />
+        ) : !activeTool ? (
+          <ToolsMenu onBack={() => setView('landing')} onSelectTool={(id) => { if (id === 'slowed') setActiveTool('slowed'); }} />
+        ) : (
+          <AudioTool onBack={() => setActiveTool(null)} />
+        )}
       </main>
 
-      {/* Mobile par footer chota dikhega */}
-      <footer className="p-6 text-center text-[9px] md:text-[10px] text-slate-700 uppercase tracking-widest border-t border-white/5">
-        Solo Artist Lab • KickMySong 2026
+      {/* FOOTER LINKS (AdSense yehi dekhta hai) */}
+      <footer className="p-6 text-center border-t border-white/5 space-y-2">
+        <div className="flex justify-center gap-6 text-[10px] uppercase tracking-widest font-bold text-slate-500">
+           <button onClick={() => setView('privacy')} className="hover:text-pink-500 transition-colors">Privacy Policy</button>
+           <button onClick={() => setView('terms')} className="hover:text-pink-500 transition-colors">Terms of Service</button>
+        </div>
+        <p className="text-[9px] text-slate-700 tracking-widest uppercase">© 2026 Kick My Song Lab</p>
       </footer>
     </div>
   );
 }
-
