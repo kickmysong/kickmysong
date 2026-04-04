@@ -6,6 +6,9 @@ import { Card } from './components/ui/card';
 
 // Pehle 'export default function AudioTool()' tha, ab ye daalo:
 export default function AudioTool({ onBack }: { onBack: () => void }) {
+ // Line 9 ke aas-paas (Function shuru hote hi)
+const [file, setFile] = useState<File | null>(null);
+const [audioBuffer, setAudioBuffer] = useState<AudioBuffer | null>(null);
   const [audioFile, setAudioFile] = useState<File | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -26,7 +29,17 @@ export default function AudioTool({ onBack }: { onBack: () => void }) {
   const pauseTimeRef = useRef<number>(0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const prevSpeedRef = useRef(0.85);
-
+    const handleBack = () => {
+    if (audioBuffer) { 
+      // Agar gaana loaded hai, toh buffer aur file dono clear karo
+      setAudioBuffer(null);
+      setAudioFile(null); // Pehle 'setFile' tha, ab 'setAudioFile' hai
+      setIsPlaying(false);
+    } else {
+      // Agar gaana nahi hai, toh Dashboard par jao
+      onBack();
+    }
+  };
 
   // Initialize Audio Context
   useEffect(() => {
