@@ -69,12 +69,12 @@ const [view, setView] = useState<'landing' | 'dashboard' | 'privacy' | 'terms' |
         
         {/* 1. Official Email (Direct Gmail Compose) */}
         <a 
-          href="mailto:soloartist.music.official@gmail.com" 
+          href="mailto:soloartistcontact@gmail.com" 
           className="p-5 bg-white/5 border border-white/10 rounded-2xl hover:border-pink-500/50 hover:bg-pink-500/5 transition-all group block"
         >
           <h3 className="text-pink-500 font-black uppercase text-[10px] mb-1 tracking-widest">Official Email</h3>
           <p className="text-white font-bold text-sm">Send a Message</p>
-          <p className="text-[9px] text-slate-500 mt-1 uppercase">Opens your Mail App</p>
+          <p className="text-[9px] text-slate-500 mt-1 uppercase">Mail us</p>
         </a>
 
         {/* 2. YouTube Channel */}

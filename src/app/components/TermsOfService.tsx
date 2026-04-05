@@ -89,7 +89,7 @@ export default function TermsOfService({ onBack }: { onBack: () => void }) {
             For legal inquiries, copyright claims (DMCA), or technical support regarding these terms, please contact the administrator:
           </p>
           <p className="mt-6 font-black text-white text-xl tracking-tight">
-            soloartist.music.official@gmail.com
+            soloartistcontact@gmail.com
           </p>
         </section>
 
